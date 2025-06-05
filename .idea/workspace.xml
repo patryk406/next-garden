@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc292ff9-01bc-4528-8b5e-a377e2a8aed8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/hero-section.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/navigation.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/services-section.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/garden-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/placeholder.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +22,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "patryk406"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:patryk406/next-garden.git",
+    "accountId": "bb128444-3849-451a-a38b-06fddedd0bfd"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 0
 }]]></component>
@@ -78,7 +86,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749143177398</updated>
-      <workItem from="1749143178609" duration="3625000" />
+      <workItem from="1749143178609" duration="3724000" />
     </task>
     <servers />
   </component>
