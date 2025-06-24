@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc292ff9-01bc-4528-8b5e-a377e2a8aed8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/components/contact-section.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/faq-section.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/portfolio-section.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/testimonials-section.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/why-us-section.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/hero-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/hero-section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/services-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/services-section.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +48,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2y67Ta8E8AIwM4NlVsBaL6e2Vm9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -49,12 +61,15 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/patryk/WebstormProjects/ogrody/public&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/patryk/WebstormProjects/ogrody/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -73,10 +88,25 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
+  <component name="RunManager" selected="npm.Next.js: server-side">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="Next.js: server-side" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.26927.40" />
       </set>
     </attachedChunks>
   </component>
@@ -87,7 +117,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749143177398</updated>
-      <workItem from="1749143178609" duration="3910000" />
+      <workItem from="1749143178609" duration="4324000" />
+      <workItem from="1750775383041" duration="1247000" />
+      <workItem from="1750777474496" duration="3377000" />
+      <workItem from="1750783263204" duration="354000" />
+      <workItem from="1750783630822" duration="2377000" />
     </task>
     <servers />
   </component>
