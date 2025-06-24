@@ -3,7 +3,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Home, Fence, Layout, Ruler, Hammer, Square, Scissors } from "lucide-react"
-import {ReactNode} from "react";
+import { ReactNode } from "react"
+import { motion } from "framer-motion"
+import { useInView } from "framer-motion"
+import { useRef } from "react"
 
 interface Service {
     icon: ReactNode
@@ -12,49 +15,94 @@ interface Service {
     price: string
 }
 
-const ServiceCard = ({ service }: { service: Service }) => (
-    <Card
-        className="group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:shadow-green-100/50 h-full flex flex-col"
-    >
-        <CardHeader className="text-center pb-4 flex-shrink-0">
-            <div className="mx-auto w-20 h-20 bg-gradient-to-br from-green-100 to-orange-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                <div className="text-green-600 group-hover:text-orange-500 transition-colors duration-300">
-                    {service.icon}
-                </div>
-            </div>
-            <CardTitle className="text-xl font-bold text-gray-800 group-hover:text-green-700 transition-colors duration-300 mb-4">
-                {service.title}
-            </CardTitle>
-        </CardHeader>
-        <CardContent className="flex-grow flex flex-col justify-between">
-            <CardDescription className="text-gray-600 text-center leading-relaxed mb-6 flex-grow">
-                {service.description}
-            </CardDescription>
-            <div className="text-center mt-auto">
-                <Badge className="bg-gradient-to-r from-orange-100 to-orange-50 text-orange-700 border-orange-200 text-lg px-4 py-2 font-semibold shadow-sm">
-                    {service.price}
-                </Badge>
-            </div>
-        </CardContent>
-    </Card>
-)
+// Animowany komponent karty
+const ServiceCard = ({ service, index }: { service: Service; index: number }) => {
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true, amount: 0.2 })
 
-// Komponent nagłówka sekcji
-const SectionHeader = ({ title, subtitle }: { title: string, subtitle: string }) => (
-    <header className="text-center mb-20">
-        <h2 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
-            {title.split(' ')[0]}{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-500">
-                {title.split(' ')[1]}
-            </span>
-        </h2>
-        <p className="text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            {subtitle}
-        </p>
-    </header>
-)
+    return (
+        <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+        >
+            <Card
+                className="group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:shadow-green-100/50 h-full flex flex-col"
+            >
+                <CardHeader className="text-center pb-4 flex-shrink-0">
+                    <motion.div
+                        className="mx-auto w-20 h-20 bg-gradient-to-br from-green-100 to-orange-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
+                        whileHover={{ rotate: [0, 5, -5, 0], transition: { duration: 0.5 } }}
+                    >
+                        <div className="text-green-600 group-hover:text-orange-500 transition-colors duration-300">
+                            {service.icon}
+                        </div>
+                    </motion.div>
+                    <CardTitle className="text-xl font-bold text-gray-800 group-hover:text-green-700 transition-colors duration-300 mb-4">
+                        {service.title}
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow flex flex-col justify-between">
+                    <CardDescription className="text-gray-600 text-center leading-relaxed mb-6 flex-grow">
+                        {service.description}
+                    </CardDescription>
+                    <div className="text-center mt-auto">
+                        <Badge className="bg-gradient-to-r from-orange-100 to-orange-50 text-orange-700 border-orange-200 text-lg px-4 py-2 font-semibold shadow-sm">
+                            {service.price}
+                        </Badge>
+                    </div>
+                </CardContent>
+            </Card>
+        </motion.div>
+    )
+}
 
-// Lista usług
+// Animowany nagłówek sekcji
+const SectionHeader = ({ title, subtitle }: { title: string, subtitle: string }) => {
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true, amount: 0.2 })
+
+    const titleWords = title.split(' ')
+
+    return (
+        <header ref={ref} className="text-center mb-20">
+            <motion.h2
+                className="text-5xl md:text-6xl font-bold text-gray-800 mb-6"
+                initial={{ opacity: 0, y: -20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+                transition={{ duration: 0.7 }}
+                aria-label={title}
+            >
+                <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    {titleWords[0]}{" "}
+                </motion.span>
+                <motion.span
+                    className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-500"
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                    {titleWords[1]}
+                </motion.span>
+            </motion.h2>
+            <motion.p
+                className="text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+            >
+                {subtitle}
+            </motion.p>
+        </header>
+    )
+}
+
+// Lista usług - dane przeniesione z głównego komponentu
 const services: Service[] = [
     {
         icon: <Square className="w-8 h-8" />,
@@ -101,8 +149,18 @@ const services: Service[] = [
 ]
 
 export default function ServicesSection() {
+    // Referencja dla animacji wejścia
+    const sectionRef = useRef(null)
+    const isInView = useInView(sectionRef, { once: true, amount: 0.1 })
+
     return (
-        <section id="services" className="py-24 px-6 relative" role="region" aria-label="Nasze usługi">
+        <section
+            id="services"
+            className="py-24 px-6 relative"
+            role="region"
+            aria-label="Nasze usługi"
+            ref={sectionRef}
+        >
             <div className="max-w-7xl mx-auto pr-20">
                 <SectionHeader
                     title="Nasze Usługi"
@@ -111,7 +169,7 @@ export default function ServicesSection() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((service, index) => (
-                        <ServiceCard key={index} service={service} />
+                        <ServiceCard key={index} service={service} index={index} />
                     ))}
                 </div>
             </div>

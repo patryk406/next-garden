@@ -1,93 +1,78 @@
-"use client"
+'use client'
 
-import { MapPin, Phone, Mail } from "lucide-react"
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
+import { Facebook, Instagram, Youtube } from 'lucide-react'
 
 export default function Footer() {
+  const footerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: footerRef,
+    offset: ['start end', 'end end']
+  })
+
+  // Efekt parallax z zachowaniem tylko ruchu pionowego
+  const y = useTransform(scrollYProgress, [0, 1], [150, 0])
+
   return (
-    <footer className="bg-gradient-to-r from-green-800 to-green-900 text-white py-16 px-6" role="contentinfo">
-      <div className="max-w-7xl mx-auto pr-20">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
-          <div>
-            <div className="flex items-center mb-6">
-              <svg
-                className="h-12 w-12 mr-3"
-                viewBox="0 0 60 60"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M30 10C30 10 20 20 35 30C50 40 40 50 30 50"
-                  stroke="#FFFFFF"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  className="animate-draw-path"
-                />
-                <path
-                  d="M20 50C20 50 10 30 20 20C30 10 40 20 40 30C40 40 30 50 20 50Z"
-                  fill="#FF9800"
-                  stroke="#FFFFFF"
-                  strokeWidth="2"
-                  className="animate-fill-shape"
-                />
-                <circle cx="15" cy="15" r="3" fill="#FFFFFF" className="animate-pop" />
-                <circle cx="45" cy="25" r="3" fill="#FFFFFF" className="animate-pop-delay-1" />
-                <circle cx="25" cy="45" r="3" fill="#FFFFFF" className="animate-pop-delay-2" />
-              </svg>
-              <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-orange-300">
-                Fantastyczne Ogrody
-              </h3>
+      <div className="relative w-full overflow-hidden">
+        <motion.footer
+            ref={footerRef}
+            style={{ y }}
+            className="relative z-10 px-6 pt-12 pb-20 w-full"
+        >
+          {/* Delikatny gradient w stylu strony */}
+          <div className="absolute inset-0 -z-10 bg-gradient-to-t from-green-50 via-orange-50/30 to-white opacity-90" />
+
+          {/* Top social links */}
+          <div className="flex items-center justify-between flex-wrap text-sm mb-12 max-w-7xl mx-auto">
+            <div className="flex items-center space-x-4 text-green-700">
+              <a href="#" aria-label="Facebook"><Facebook size={16} /></a>
+              <a href="#" aria-label="Instagram"><Instagram size={16} /></a>
+              <a href="#" aria-label="YouTube"><Youtube size={16} /></a>
             </div>
-            <p className="text-green-100 leading-relaxed text-lg">
-              Profesjonalne usługi ogrodnicze z pasją i zaangażowaniem. Tworzymy ogrody, które zachwycają przez cały
-              rok.
-            </p>
+            <div className="flex flex-wrap gap-6 text-gray-600 font-medium">
+              <a href="#oferta" className="hover:text-green-700 transition-colors">Projektowanie</a>
+              <a href="#realizacje" className="hover:text-green-700 transition-colors">Realizacje</a>
+              <a href="#uslugi" className="hover:text-green-700 transition-colors">Pielęgnacja</a>
+            </div>
+            <div className="text-gray-500 text-xs mt-4 md:mt-0">
+              © 2025 Fantastyczne ogrody Wszelkie prawa zastrzeżone.
+            </div>
           </div>
 
-          <div>
-            <h4 className="text-xl font-bold mb-6 text-orange-300">Nasze usługi</h4>
-            <ul className="space-y-3 text-green-100">
-              <li className="hover:text-orange-300 transition-colors duration-300">Projektowanie ogrodów</li>
-              <li className="hover:text-orange-300 transition-colors duration-300">Systemy nawadniania</li>
-              <li className="hover:text-orange-300 transition-colors duration-300">Zakładanie trawników</li>
-              <li className="hover:text-orange-300 transition-colors duration-300">Pielęgnacja drzew</li>
-              <li className="hover:text-orange-300 transition-colors duration-300">Ogrody kwiatowe</li>
-              <li className="hover:text-orange-300 transition-colors duration-300">Elementy małej architektury</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xl font-bold mb-6 text-orange-300">Kontakt</h4>
-            <address className="space-y-4 not-italic">
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-orange-300" aria-hidden="true" />
-                <span className="text-green-100">ul. Ogrodowa 123, 00-001 Warszawa</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-orange-300" aria-hidden="true" />
-                <a href="tel:+48123456789" className="text-green-100 hover:text-orange-300 transition-colors">
-                  +48 123 456 789
-                </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-orange-300" aria-hidden="true" />
-                <a
-                  href="mailto:kontakt@fantastyczneogrody.pl"
-                  className="text-green-100 hover:text-orange-300 transition-colors"
+          {/* Next Up Section - zmodyfikowane na CTA */}
+          <div className="max-w-7xl mx-auto text-left">
+            <p className="text-lg text-green-700">Skontaktuj się z nami</p>
+            <h2 className="text-4xl font-bold text-gray-800">STWÓRZMY TWÓJ OGRÓD</h2>
+            <div className="mt-4 flex items-center space-x-4">
+              <div className="h-2 bg-gradient-to-r from-green-500 to-orange-400 flex-1 rounded-full" />
+              <motion.a
+                  href="#contact"
+                  aria-label="Przejdź do formularza kontaktowego"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+              >
+                <motion.svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-10 h-10 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 1.5,
+                      ease: "easeInOut"
+                    }}
                 >
-                  kontakt@fantastyczneogrody.pl
-                </a>
-              </div>
-            </address>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </motion.svg>
+              </motion.a>
+            </div>
           </div>
-        </div>
-
-        <div className="border-t border-green-700 pt-8 text-center">
-          <p className="text-green-200 text-lg">
-            © {new Date().getFullYear()} Fantastyczne Ogrody. Wszystkie prawa zastrzeżone.
-          </p>
-        </div>
+        </motion.footer>
       </div>
-    </footer>
   )
 }
