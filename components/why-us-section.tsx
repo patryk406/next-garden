@@ -96,15 +96,15 @@ const FeatureCard = ({ feature, index }: { feature: FeatureItem; index: number }
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       <motion.div
-        className="mx-auto w-24 h-24 bg-gradient-to-br from-green-100 to-orange-100 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-xl"
+        className="mx-auto w-24 h-24 bg-[#F5F1E3] rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
         whileHover={{ rotate: [0, 5, -5, 0], transition: { duration: 0.5 } }}
       >
-        <motion.div className="text-green-600 group-hover:text-orange-500 transition-colors duration-300">
+        <motion.div className="text-[#6A994E] group-hover:text-[#D98E73] transition-colors duration-300">
           {feature.icon}
         </motion.div>
       </motion.div>
       <motion.h3
-        className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-green-700 transition-colors duration-300"
+        className="text-xl sm:text-2xl font-semibold text-[#2D2D2D] mb-4 group-hover:text-[#6A994E] transition-colors duration-300"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.3, delay: 0.2 + index * 0.1 }}
@@ -112,7 +112,7 @@ const FeatureCard = ({ feature, index }: { feature: FeatureItem; index: number }
         {feature.title}
       </motion.h3>
       <motion.p
-        className="text-gray-600 text-lg leading-relaxed"
+        className="text-[#4A4A4A] text-base sm:text-lg leading-relaxed max-w-xs mx-auto"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
@@ -129,18 +129,18 @@ export default function WhyUsSection() {
 
   return (
     <section
-      className="py-24 px-6"
+      className="py-16 sm:py-24 lg:py-32 px-6 bg-white"
       aria-labelledby="why-us-heading"
       ref={sectionRef}
     >
-      <div className="max-w-7xl mx-auto pr-20">
+      <div className="max-w-7xl mx-auto">
         <motion.header
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-20"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.7 }}
         >
-          <h2 id="why-us-heading" className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+          <h2 id="why-us-heading" className="section-title text-[#2D2D2D] mb-6">
             <motion.span
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -149,7 +149,7 @@ export default function WhyUsSection() {
               Dlaczego{" "}
             </motion.span>
             <motion.span
-              className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-500"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-[#6A994E] to-[#7DB25F]"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -158,7 +158,7 @@ export default function WhyUsSection() {
             </motion.span>
           </h2>
           <motion.p
-            className="text-2xl text-gray-700 max-w-3xl mx-auto"
+            className="body-text text-[#4A4A4A] max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -167,7 +167,7 @@ export default function WhyUsSection() {
           </motion.p>
         </motion.header>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} />
           ))}

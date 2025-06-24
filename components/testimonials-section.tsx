@@ -42,8 +42,8 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
     exit={{ opacity: 0, scale: 0.9 }}
     transition={{ duration: 0.5 }}
   >
-    <Card className="bg-white/95 backdrop-blur-sm border-0 shadow-2xl">
-      <CardContent className="p-12 text-center">
+    <Card className="bg-white rounded-2xl border-0 shadow-xl">
+      <CardContent className="p-6 sm:p-10 text-center">
         <motion.div
           className="flex justify-center mb-6"
           aria-label={`Ocena: ${testimonial.rating} na 5 gwiazdek`}
@@ -58,12 +58,12 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1 * i, duration: 0.3 }}
             >
-              <Star className="w-8 h-8 text-orange-400 fill-current" aria-hidden="true" />
+              <Star className="w-6 h-6 sm:w-8 sm:h-8 text-[#D98E73] fill-current" aria-hidden="true" />
             </motion.div>
           ))}
         </motion.div>
         <motion.blockquote
-          className="text-2xl text-gray-700 mb-8 italic leading-relaxed"
+          className="text-xl sm:text-2xl text-[#2D2D2D] mb-8 italic leading-relaxed"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -76,8 +76,8 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <div className="font-bold text-xl text-gray-800">{testimonial.name}</div>
-          <div className="text-gray-600 text-lg">{testimonial.location}</div>
+          <div className="font-bold text-lg sm:text-xl text-[#3A3A3C]">{testimonial.name}</div>
+          <div className="text-[#4A4A4A] text-base sm:text-lg">{testimonial.location}</div>
         </motion.cite>
       </CardContent>
     </Card>
@@ -101,10 +101,10 @@ const TestimonialControls = ({
         aria-selected={index === currentIndex}
         aria-label={`Opinia ${index + 1}`}
         className={cn(
-          "w-4 h-4 rounded-full transition-all duration-300",
+          "w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300",
           index === currentIndex
-            ? "bg-orange-500 scale-125 shadow-lg"
-            : "bg-gray-300 hover:bg-orange-300"
+            ? "bg-[#D98E73] scale-125 shadow-lg"
+            : "bg-[#B2B2B2] hover:bg-[#D98E73]/70"
         )}
         onClick={() => setCurrentIndex(index)}
         whileHover={{ scale: 1.3 }}
@@ -122,36 +122,42 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="py-24 px-6 bg-gradient-to-r from-green-50/50 to-orange-50/50"
+      className="py-16 sm:py-24 lg:py-32 px-6 bg-[#F5F1E3]/50"
       aria-labelledby="testimonials-heading"
       ref={sectionRef}
     >
-      <div className="max-w-5xl mx-auto pr-20">
+      <div className="max-w-5xl mx-auto">
         <motion.header
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-20"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.7 }}
         >
-          <h2 id="testimonials-heading" className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+          <h2 id="testimonials-heading" className="section-title text-[#2D2D2D] mb-6">
             <motion.span
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              className="font-semibold"
             >
               Opinie{" "}
             </motion.span>
             <motion.span
-              className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-500"
+              className="relative inline-block"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Klientów
+              <span className="relative z-10 font-black text-transparent bg-clip-text bg-gradient-to-r from-[#6A994E] to-[#7DB25F]">
+                Klientów
+              </span>
+              <span className="absolute -inset-0 z-0 text-[#6A994E] blur-[3px] opacity-20 font-black">
+                Klientów
+              </span>
             </motion.span>
           </h2>
           <motion.p
-            className="text-2xl text-gray-700"
+            className="body-text text-[#4A4A4A] max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -170,8 +176,8 @@ export default function TestimonialsSection() {
             <TestimonialCard key={currentTestimonial} testimonial={testimonials[currentTestimonial]} />
           </AnimatePresence>
           <TestimonialControls
-            testimonials={testimonials} 
-            currentIndex={currentTestimonial} 
+            testimonials={testimonials}
+            currentIndex={currentTestimonial}
             setCurrentIndex={setCurrentTestimonial} 
           />
         </motion.div>

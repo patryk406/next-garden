@@ -65,7 +65,6 @@ const menuItems: MenuItem[] = [
     { name: "Strona główna", href: "#hero", id: "hero", icon: <Home className="w-4 h-4" /> },
     { name: "Usługi", href: "#services", id: "services", icon: <Leaf className="w-4 h-4" /> },
     { name: "Realizacje", href: "#portfolio", id: "portfolio", icon: <Camera className="w-4 h-4" /> },
-    { name: "Opinie", href: "#testimonials", id: "testimonials", icon: <Star className="w-4 h-4" /> },
     { name: "FAQ", href: "#faq", id: "faq", icon: <HelpCircle className="w-4 h-4" /> },
     { name: "Kontakt", href: "#contact", id: "contact", icon: <Phone className="w-4 h-4" /> },
 ]

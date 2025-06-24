@@ -61,22 +61,22 @@ const FaqCard = ({
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <Card className="bg-white/90 gap-0 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+      <Card className="bg-white gap-0 rounded-xl border-0 shadow-md hover:shadow-lg transition-all duration-300">
         <CardHeader
-          className="cursor-pointer hover:bg-green-50/50 transition-colors duration-300"
+          className="cursor-pointer hover:bg-[#F5F1E3]/50 transition-colors duration-300"
           onClick={toggleOpen}
           role="button"
           aria-expanded={isOpen}
           aria-controls={`faq-answer-${index}`}
         >
           <div className="flex justify-between items-center">
-            <CardTitle className="text-xl font-bold text-gray-800 pr-4">{item.question}</CardTitle>
+            <CardTitle className="text-lg sm:text-xl font-semibold text-[#2D2D2D] pr-4">{item.question}</CardTitle>
             <motion.div
               animate={{ rotate: isOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
             >
               <ChevronDown
-                className="w-6 h-6 text-green-600 flex-shrink-0"
+                className="w-6 h-6 text-[#6A994E] flex-shrink-0"
                 aria-hidden="true"
               />
             </motion.div>
@@ -91,9 +91,9 @@ const FaqCard = ({
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <CardContent className="pb-8 pt-4">
+              <CardContent className="pb-6 pt-0 sm:pb-8 sm:pt-2">
                 <motion.p
-                  className="text-gray-600 leading-relaxed text-lg"
+                  className="text-[#4A4A4A] leading-relaxed text-base sm:text-lg"
                   initial={{ y: -10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.1 }}
@@ -117,36 +117,42 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="py-24 px-6"
+      className="py-16 sm:py-24 lg:py-32 px-6 bg-[#F5F1E3]/30"
       aria-labelledby="faq-heading"
       ref={sectionRef}
     >
-      <div className="max-w-5xl mx-auto pr-20">
+      <div className="max-w-5xl mx-auto">
         <motion.header
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-20"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.7 }}
         >
-          <h2 id="faq-heading" className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+          <h2 id="faq-heading" className="section-title text-[#2D2D2D] mb-6">
             <motion.span
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              className="font-semibold"
             >
               Często zadawane{" "}
             </motion.span>
             <motion.span
-              className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-500"
+              className="relative inline-block"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              pytania
+              <span className="relative z-10 font-black text-transparent bg-clip-text bg-gradient-to-r from-[#6A994E] to-[#7DB25F]">
+                pytania
+              </span>
+              <span className="absolute -inset-0 z-0 text-[#6A994E] blur-[3px] opacity-20 font-black">
+                pytania
+              </span>
             </motion.span>
           </h2>
           <motion.p
-            className="text-2xl text-gray-700"
+            className="body-text text-[#4A4A4A] max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -155,7 +161,7 @@ export default function FaqSection() {
           </motion.p>
         </motion.header>
 
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {faqItems.map((item, index) => (
             <FaqCard
               key={index}
